@@ -22,14 +22,12 @@
         background-color: hsl(0, 0, 96%);
         font-family: 'Oxygen Mono', monospace;
         font-size: 90%;
-        overflow-wrap: break-word;
     }
 
     // hyperlink
     a {
         color: $fgc3;
         text-decoration: none;
-        overflow-wrap: break-word;
 
         &:hover {
             color: lighten($fgc3, 10%);

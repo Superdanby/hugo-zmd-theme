@@ -1,0 +1,49 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	var article = document.getElementsByTagName("article")[0];
+
+	var s = article.getElementsByTagName("a");
+	var i = 0;
+	while (s[i] && typeof s[i].innerHTML != "undefined")
+	{
+		var parent = s[i].parentElement;
+		var flag = true;
+		while (parent)
+		{
+			if (parent.tagName == "PRE")
+			{
+				flag = false;
+				break;
+			}
+			parent = parent.parentElement;
+		}
+		if (flag)
+		{
+			s[i].innerHTML = s[i].innerHTML.replace(new RegExp("([^a-zA-Z\d])","g"),"$1<wbr>");
+		}
+		++i;
+	}
+
+	s = article.getElementsByTagName("code");
+	i = 0;
+	while (s[i] && typeof s[i].innerHTML != "undefined")
+	{
+		var parent = s[i].parentElement;
+		var flag = true;
+		while (parent)
+		{
+			if (parent.tagName == "PRE")
+			{
+				flag = false;
+				break;
+			}
+			parent = parent.parentElement;
+		}
+		if (flag)
+		{
+			s[i].innerHTML = s[i].innerHTML.replace(new RegExp("([^a-zA-Z\d])","g"),"$1<wbr>");
+		}
+		++i;
+	}
+});
+</script>

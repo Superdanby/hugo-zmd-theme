@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <link rel="shortcut icon" type="image/jpeg" href="{{ .Site.Params.avatar | relURL }}" />
-        
+
         <!-- zmd style & script -->
         <link rel="stylesheet" href="{{ "style.min.css" | relURL }}">
 
@@ -42,6 +42,9 @@
             });
             </script>
         {{ end }}
+
+        <!-- tokenize inline codes and hyperlinks -->
+        {{ partial "backslash" . }}
 
     </head>
 
