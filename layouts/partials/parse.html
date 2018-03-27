@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	var s = article.getElementsByTagName("a");
 	var i = 0;
-	var re = new RegExp("([\\.\\/\\-\\,])","g")
-	while (s[i] && typeof s[i].innerHTML != "undefined" && s[i].getElementsByTagName("code").length == 0)
+	var re = new RegExp("([\\.\\/\\-\\,])","g");
+	while (s[i] && typeof s[i].innerHTML != "undefined")
 	{
-		s[i].innerHTML = s[i].innerHTML.replace(re,"$1<wbr>");
+		if (s[i].getElementsByTagName("code").length == 0)
+			s[i].innerHTML = s[i].innerHTML.replace(re,"$1<wbr>");
 		++i;
 	}
 
