@@ -2,25 +2,15 @@
 document.addEventListener("DOMContentLoaded", function() {
 	var article = document.getElementsByTagName("article")[0];
 
+	if (typeof article == "undefined")
+		return;
+
 	var s = article.getElementsByTagName("a");
 	var i = 0;
-	while (s[i] && typeof s[i].innerHTML != "undefined")
+	var re = new RegExp("([\\.\\/\\-\\,])","g")
+	while (s[i] && typeof s[i].innerHTML != "undefined" && s[i].getElementsByTagName("code").length == 0)
 	{
-		var parent = s[i].parentElement;
-		var flag = true;
-		while (parent)
-		{
-			if (parent.tagName == "PRE")
-			{
-				flag = false;
-				break;
-			}
-			parent = parent.parentElement;
-		}
-		if (flag)
-		{
-			s[i].innerHTML = s[i].innerHTML.replace(new RegExp("([^a-zA-Z\d])","g"),"$1<wbr>");
-		}
+		s[i].innerHTML = s[i].innerHTML.replace(re,"$1<wbr>");
 		++i;
 	}
 
@@ -29,20 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	while (s[i] && typeof s[i].innerHTML != "undefined")
 	{
 		var parent = s[i].parentElement;
-		var flag = true;
-		while (parent)
-		{
-			if (parent.tagName == "PRE")
-			{
-				flag = false;
-				break;
-			}
+		while (parent && parent.tagName != "PRE" && parent.tagName != "A")
 			parent = parent.parentElement;
-		}
-		if (flag)
-		{
-			s[i].innerHTML = s[i].innerHTML.replace(new RegExp("([^a-zA-Z\d])","g"),"$1<wbr>");
-		}
+		if (!parent)
+			s[i].innerHTML = s[i].innerHTML.replace(re,"$1<wbr>");
 		++i;
 	}
 });
