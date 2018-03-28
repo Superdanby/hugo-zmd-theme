@@ -1,6 +1,6 @@
 # Hugo zmd Theme
 
-This is a fork of [moshyc/hugo-zmd-theme](https://github.com/amoshyc/hugo-zmd-theme).
+This is a fork of [amoshyc/hugo-zmd-theme](https://github.com/amoshyc/hugo-zmd-theme).
 
 # What's different?
 
